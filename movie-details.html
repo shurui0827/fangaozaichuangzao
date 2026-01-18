@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《致爱梵高》电影制作过程 | 梵高再创造项目</title>
+    <link rel="stylesheet" href="fangao1CSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --vangogh-blue: #1a5fb4;
+            --vangogh-yellow: #f9d342;
+            --vangogh-dark: #222; 
+        }
+
+        /* 返回链接 */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--vangogh-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        /* 内容区域 */
+        main {
+            margin-top: 70px;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section {
+            width: 100%;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            color: var(--vangogh-blue);
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* 技术详情 */
+        .tech-detail {
+            position: relative;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* 背景图伪元素 */
+        .tech-detail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(./materials/pics/moviedetails-background.jpg) center/cover no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        /* 时间线标题 */
+        .tech-detail h3 {
+            color: var(--vangogh-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vangogh-yellow);
+            letter-spacing: 0.5px;
+            font-size: 28px; 
+            text-align: center; 
+            font-weight: bold;
+        }
+
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 4px 1fr;
+            gap: 10px;
+            min-height: calc(100% - 60px);
+            padding-bottom: 20px; 
+        }
+
+        /* 中间黄色时间线  */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0; 
+            left: 50%;
+            transform: translateX(-50%); 
+            background-color: var(--vangogh-yellow);
+            width: 4px; 
+            grid-column: unset;
+            grid-row: unset;
+            height: unset;
+            margin: unset;
+        }
+
+        .timeline-item {
+            display: contents;
+        }
+
+        /* 文字/图片块统一样式 */
+        .timeline-content, .timeline-image {
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 文字块样式 */
+        .timeline-content {
+            background-color: rgba(232, 244, 248, 0.8);
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        /* 文字块标题样式 */
+        .timeline-content h4 {
+            color: var(--vangogh-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.5;
+        }
+
+        /* 文字块正文样式 */
+        .timeline-content p {
+            margin: 0 0 12px 0;
+            letter-spacing: 1.2px;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .timeline-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 图片块样式 */
+        .timeline-image {
+            background-color: rgba(250, 245, 255, 0.8);
+        }
+
+        /* 图片适配 */
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* 时间线项布局 */
+        .timeline-item:nth-child(1) .timeline-content {
+            grid-column: 1;
+            grid-row: 1;
+            border-left: 4px solid var(--vangogh-blue);
+        }
+        .timeline-item:nth-child(1) .timeline-image {
+            grid-column: 3;
+            grid-row: 1;
+        }
+        .timeline-item:nth-child(2) .timeline-content {
+            grid-column: 3;
+            grid-row: 2;
+            border-right: 4px solid var(--vangogh-blue);
+        }
+        .timeline-item:nth-child(2) .timeline-image {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .timeline-item:nth-child(3) .timeline-content {
+            grid-column: 1;
+            grid-row: 3;
+            border-left: 4px solid var(--vangogh-blue);
+        }
+        .timeline-item:nth-child(3) .timeline-image {
+            grid-column: 3;
+            grid-row: 3;
+        }
+        .timeline-item:nth-child(4) .timeline-content {
+            grid-column: 3;
+            grid-row: 4;
+            border-right: 4px solid var(--vangogh-blue);
+        }
+        .timeline-item:nth-child(4) .timeline-image {
+            grid-column: 1;
+            grid-row: 4;
+        }
+
+        /* 艺术家画廊样式 */
+        .artist-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .artist-item {
+            text-align: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .artist-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--vangogh-yellow);
+        }
+
+        /* 信封悬停效果样式 */
+        /* 全局统一正文字体大小+基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 统一所有正文p标签的基础样式 */
+        p {
+            font-size: 16px !important; 
+            line-height: 1.8; 
+            color: #333; 
+            margin-bottom: 12px !important; 
+            text-indent:2em;
+        }
+        p:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        /* 指定段落的左右间距 */
+        .custom-spacing-p {
+            padding-left: 10px !important; 
+            padding-right: 10px !important;
+        }
+
+        /* 直接内联CSS*/
+        .vangogh-test {
+            position: relative;
+            width: 800px; 
+            height: 500px; 
+            margin: 40px auto;
+            border: 2px solid #1a5fb4; 
+            border-radius: 8px; 
+            overflow: hidden; 
+        }
+
+        .vangogh-envelope-test {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent; 
+            z-index: 2;
+            transition: all 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px; 
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8); 
+        }
+
+        /* 伪元素承载图片*/
+        .vangogh-envelope-test::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(./materials/pics/Chinesefemaleartist.png) center/cover no-repeat;
+            opacity: 0.7; 
+            z-index: -1; 
+        }
+
+        .vangogh-paper-test {
+            position: absolute;
+            width: 100%;
+            height: 100%; 
+            padding: 40px 10px; 
+            background: #E8F5E9;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease 0.5s;
+            z-index: 1;
+            box-sizing: border-box; 
+            overflow-y: auto; 
+        }
+
+        .vangogh-test:hover .vangogh-envelope-test {
+            opacity: 0;
+            transform: translateY(-100%); 
+        }
+
+        .vangogh-test:hover .vangogh-paper-test {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Flex布局样式 */
+        .content-container {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 10px; 
+            max-width: 1200px;
+            margin: 0 auto; 
+            gap: 30px; 
+        }
+
+        .text-col-full {
+            flex: 1; 
+        }
+
+        .img-col-single {
+            flex-shrink: 0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+
+        .img-col-single img {
+            width: 250px; 
+            height: auto; 
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 图片说明文字 */
+        .img-col-single .img-desc {
+            text-align: center;
+            font-size: 14px !important; 
+            color: #666;
+            margin-top: 8px;
+            margin-bottom: 0 !important;
+        }
+
+        /* 总结区域样式 */
+        .tech-breakthrough {
+            /* 渐变背景 */
+            background: linear-gradient(135deg, 
+                rgba(26, 95, 180, 0.2), 
+                rgba(249, 211, 66, 0.15), 
+                rgba(180, 80, 180, 0.2)  
+            );
+            padding: 30px 40px; 
+            border-radius: 12px; 
+            margin: 40px 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* 页脚核心样式  */
+        #main-footer {
+            background-color: var(--vangogh-dark);
+            color: #fff;
+            padding: 50px 20px;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto; 
+            display: flex;
+            justify-content: space-between; 
+            gap: 20px;
+        }
+
+        .footer-card {
+            flex: 1; 
+            min-width: 280px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        /* 页脚卡片标题样式 */
+        .footer-card h3, .footer-card h4 {
+            color: var(--vangogh-yellow);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vangogh-yellow);
+        }
+
+        .footer-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-card li {
+            margin: 10px 0;
+        }
+
+        .footer-card a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-card a:hover {
+            color: var(--vangogh-yellow);
+        }
+        
+        /* 响应式样式 */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            .vangogh-test {
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+            }
+            .content-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav id="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-film"></i>
+                <span>电影制作过程</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">返回主页面</a></li>
+                <li><a href="ai-details.html">AI技术细节</a></li>
+                <li><a href="masterpiece-details.html">梵高作品欣赏</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 主内容区域 -->
+    <main>
+        <div class="content-section">
+            <!-- 返回链接 -->
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回梵高再创造主页面
+            </a>
+            
+            <!-- 页面标题 -->
+            <div class="section-header">
+                <h2><i class="fas fa-film"></i> 《致爱梵高》电影制作过程详解</h2>
+                <p>探索世界首部全手绘油画动画电影的制作奇迹</p>
+            </div>
+
+            <!-- 制作时间线核心区域 -->
+            <div class="tech-detail">
+                <h3>制作时间线</h3>
+                <div class="timeline">
+                    <!-- 第1项-->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2011年：项目启动</h4>
+                            <p>导演多洛塔·科别拉和休·韦尔什曼首次提出用梵高画风制作动画电影的想法，《爱·文森特》是全球首部完全以绘画手法拍摄的影片。
+团队坚信，若没有文森特的画作，便无法真正讲述他的故事。</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="./materials/pics/movie-detailscrews.png" alt="2011年项目启动">
+                        </div>
+                    </div>
+                    
+                    <!-- 第2项 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2012-2014年：前期准备</h4>
+                            <p>完成剧本创作，研究梵高生平，招募画家团队，开发独特的油画动画制作流程和技术。</p>
+                            <p>导演多罗塔·科别拉读过梵高的一句话：“我们只能通过画作进行交流”。于是她开始着手创作《爱之维森特》，赋予他的画作以生命。</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="./materials/pics/movie-detailspainter.png" alt="2012-2014年前期准备">
+                        </div>
+                    </div>
+                    
+                    <!-- 第3项 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2015年：正式制作开始</h4>
+                            <p>125位画家开始在波兰和希腊的工作室同时工作，每天制作约1-2秒的动画内容。</p>
+                            <p>一旦一个画面制作完成，绘画动画师便会拍摄一张 6K 分辨率的数字静态图像，然后开始着手制作下一帧。</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="./materials/pics/movie-detailspeople.png" alt="2015年正式制作开始">
+                        </div>
+                    </div>
+                    
+                    <!-- 第4项 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2016年：后期制作</h4>
+                            <p>《挚爱文森特》中的所有角色均由真人演员表演，他们或是置身于专门搭建的场景中，或是置身于绿幕背景前，通过现场观看系统在场景中合成《挚爱文森特》设计画作。</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="./materials/pics/movie-detailsshootings.png" alt="2016年后期制作">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 悬停效果模块 -->
+            <div class="vangogh-test">
+                <div class="vangogh-envelope-test">
+                   悬停查看参与绘制的唯一华人
+                </div>
+               
+                <div class="vangogh-paper-test">
+                    <div class="content-container">
+                        <div class="text-col-full">
+                            <p>这部动画电影的选拔属全球公开招聘，一共有五千多人投表申请，100多人最终只有30名被选中，而她也是仅有的一名华人艺术家：TIFFANIE MANG</p>
+                            <p>Tiffanie Mang，25岁， 自小在美国长大，父亲是香港人。毕业于南加州大学动画与数字艺术专业，是一位视觉设计艺术家、插画家。</p>
+                            <p>她从五岁开始画画，陪伴了她七年的一位老师是她的美术启蒙。她从他身上学到了：不只是画己所见，更要从心出发来画画。</p>
+                        </div>
+                        <div class="img-col-single">
+                            <img src="./materials/pics/Tiffanie%20Mang2.png" alt="TIFFANIE MANG">
+                            <p class="img-desc">TIFFANIE MANG</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 指定段落添加class -->
+                    <p class="custom-spacing-p">2016年，在好友的鼓励下，Tiffanie得悉《至爱梵高》的创作计划后就放弃画室工作，前往申请入队。本以为自己的申请石沉大海，但两个月后却接到入选通知并需要前往波兰格但斯克参加面试。</p>
+                    <p class="custom-spacing-p">在波兰，她和一众参选者接受一连三日的苛刻的面试考验。</p>
+                    <p class="custom-spacing-p">“面试要接受多个test，第一天是考混色，因为这是油画很重要的一部分，其他test则是跟着动画画面，要10分钟内将画面绘画成油画，我大约画了6幅，其实目的是考验画家的绘画速度和基本技巧，过了这关后，接着便要接受培训。导师要我们不停练习，绘出片中某些人物的不同动态，练习几星期后才可以开始为电影作画。”——Tiffanie Mang</p>
+                    <p class="custom-spacing-p">她参与《至爱梵高》制作的六个多月中，负责了六个不同镜头的绘作。</p>
+                </div>
+            </div>
+
+            <!-- 总结区域 -->
+            <div class="tech-breakthrough">
+                <h3 style="color: var(--vangogh-blue); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--vangogh-yellow);text-align: center">总结</h3>
+                
+    
+                <p>《至爱梵高》这部电影首先由真人演员在绿幕前表演，然后将视频帧打印到画布上，画家们根据打印的轮廓进行油画创作。其次，团队制定详细的风格指南，确保不同画家创作的画面在笔触、色彩和风格上保持一致。每幅完成的油画都会被高分辨率扫描，然后在电脑中进行后期处理，确保动画流畅度。并且建立建立三级审查制度：画家自查 → 组长审查 → 艺术总监最终确认，确保每一帧都符合梵高风格。</p>
+            </div>
+            
+            <!-- 返回主页面按钮 -->
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="index.html" class="subpage-link" style="display: inline-block; background-color: var(--vangogh-blue); color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                    <i class="fas fa-home"></i> 返回主页面
+                </a>
+            </div>
+        </div>
+    </main>
+<!-- 页脚部分 -->
+   <footer id="main-footer">
+    
+    <div class="footer-container">
+            <div class="footer-card card-credits">
+            <h4>梵高作品欣赏子页面</h4>
+            <ul>
+                <li>作品欣赏专项内容</li>
+                <li>© 2025 数字媒体技术作业</li>
+            </ul>
+        </div>
+        
+        <div class="footer-card card-links">
+            <h4>相关页面</h4>
+            <ul>
+                <li><a href="index.html">主页面</a></li>
+                <li><a href="ai-details.html">AI技术细节</a></li>
+                <li><a href="movie-details.html">电影制作过程</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-card card-credits">
+            <h4>参考资料</h4>
+            <ul>
+                <li>《致爱梵高》制作纪录片</li>
+                <li>梵高作品官方解析</li>
+                <li>艺术史研究文献</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

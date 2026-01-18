@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从梵高的全世界路过 | 梵高再创造项目</title>
+    <link rel="stylesheet" href="fangao1CSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            color: var(--vangogh-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 标题样式*/
+        .section-header {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0;
+        }
+        .section-header h2 i {
+            color: var(--vangogh-yellow);
+            font-size: 2.2rem;
+        }
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 10px 0 0;
+        }
+
+        /* 图片区*/
+        .van-gogh-gallery {
+            max-width: 900px;
+            margin: 40px auto; 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px; 
+        }
+
+        .gallery-item {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px; 
+            object-fit: cover;
+            border-radius: 4px;
+            border: 3px solid var(--vangogh-yellow);
+            margin-bottom: 15px;
+        }
+
+        .gallery-item p {
+            color: var(--vangogh-dark);
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* 页脚*/
+        #main-footer {
+            background-color: var(--vangogh-dark);
+            color: #fff;
+            padding: 50px 20px;
+            margin-top: 60px;
+            width: 100%; 
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto; 
+            display: flex;
+            justify-content: space-between; 
+            gap: 20px;
+        }
+
+        .footer-card {
+            flex: 1; 
+            min-width: 280px; 
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .footer-card h3, .footer-card h4 {
+            color: var(--vangogh-yellow);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vangogh-yellow);
+        }
+
+        .footer-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-card li {
+            margin: 10px 0;
+        }
+
+        .footer-card a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-card a:hover {
+            color: var(--vangogh-yellow);
+        }
+        /* 底部板块样式 */
+        .tech-detail {
+            background-color: rgba(255, 255, 255, 0.5); 
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 1200px;   
+            width: 100%;         
+            margin-left: auto;   
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tech-detail p {
+            color: var(--vangogh-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vangogh-yellow);
+            text-indent: 0; 
+            text-align: center; 
+        }
+    </style>
+</head>
+
+    
+<body>
+    <!-- 导航栏 -->
+    <nav id="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-film"></i>
+                <span>从梵高的全世界路过</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">返回主页面</a></li>
+                <li><a href="ai-details.html">AI技术细节</a></li>
+                <li><a href="movie-details.html">电影制作</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main style="margin-top: 70px; padding: 40px 20px;">
+         <div class="content-section">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回梵高再创造主页面
+            </a>
+            
+            
+            <!-- 标题 -->
+            <div class="section-header">
+                <h2><i class="fas fa-palette"></i> 梵高作品欣赏</h2>
+                <p>深入赏析梵高经典作品的艺术魅力</p>
+            </div>
+
+            <!-- 图片区 -->
+            <div class="van-gogh-gallery">
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%201.jpg" alt="梵高作品《罗纳河上的星夜》">
+                    <p>《罗纳河上的星夜》</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%202.jpg" alt="梵高作品《麦田与柏树》">
+                    <p>《麦田与柏树》</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%203.jpg" alt="梵高作品《圣雷米的景观》">
+                    <p>《圣雷米的景观》</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%204.jpg" alt="梵高作品《奥维尔的麦田与农舍》">
+                    <p>《奥维尔的麦田与农舍》</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%205.jpg" alt="梵高作品《丰收》">
+                    <p>《丰收》</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./materials/pics/fangao%20ziwangye%206.jpg" alt="梵高作品《雷云下的麦田》">
+                    <p>《雷云下的麦田》</p>
+                </div>
+            </div>
+            
+              <!-- 底部板块 -->
+            <div class="tech-detail">
+                <p>更多作品详见梵高博物馆官方网页或麦田艺术</p>
+            </div>
+             
+            <!-- 返回按钮 -->
+            <div style="text-align: center; margin: 50px 0;">
+                <a href="index.html" class="subpage-link" style="display: inline-block; background-color: var(--vangogh-blue); color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                    <i class="fas fa-home"></i> 返回主页面
+                </a>
+            </div>
+        </div>
+    </main>
+    
+ <!--页脚 -->
+<footer id="main-footer">
+    
+    <div class="footer-container">
+            <div class="footer-card card-credits">
+            <h4>梵高作品欣赏子页面</h4>
+            <ul>
+                <li>作品欣赏专项内容</li>
+                <li>© 2025 数字媒体技术作业</li>
+            </ul>
+        </div>
+        
+        <div class="footer-card card-links">
+            <h4>相关页面</h4>
+            <ul>
+                <li><a href="index.html">主页面</a></li>
+                <li><a href="ai-details.html">AI技术细节</a></li>
+                <li><a href="movie-details.html">电影制作过程</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-card card-credits">
+            <h4>参考资料</h4>
+            <ul>
+                <li>《致爱梵高》制作纪录片</li>
+                <li>梵高作品官方解析</li>
+                <li>艺术史研究文献</li>
+            </ul>
+        </div>
+    </div>
+</footer>
